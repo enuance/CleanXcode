@@ -42,7 +42,7 @@ ___
 This command will display all locations where files have the name “CleanXcode”
 It should be the one contained in `/Users/<UserName>/Library/Developer/Xcode/DerivedData/cleanxcode-<GeneratedString>/Build/Products/Debug/`
 
-5. You can move your executable to a directory of your choosing and run it by entering it in the command line
+5. You can move your executable to a directory of your choosing and run it by entering it's location in the command line
 
 ```zsh
 % <DirectoryOfYourChoosing>/CleanXcode
@@ -56,5 +56,13 @@ You can then make an alias (allows you to enter a single command to run CleanXco
 * .bash_profile (if you’re using bash as your default shell) 
 * .zprofile (if you’re using zsh as your default shell)
 
-`#My Command for running CleanXcode, which cleans out device support and derived files.`
-`alias cleanXcode='<DirectoryOfYourChoosing>/CleanXcode'`
+```zsh
+#My Command for running CleanXcode, which cleans out device support and derived files.
+alias cleanXcode='<DirectoryOfYourChoosing>/CleanXcode'
+```
+
+Once this is done, you'll be able to run CleanXcode by entering:
+
+```zsh
+% cleanXcode
+```

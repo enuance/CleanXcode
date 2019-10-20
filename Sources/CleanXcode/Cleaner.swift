@@ -12,7 +12,7 @@ struct Cleaner {
 
     func provideWarning() {
         let warning = """
-        Running this program will make un-reversable changes.
+        Running this program will make irreversible changes.
 
         Are you sure you want to delete all of Xcode's Derived
         Data and Device Support files from this computer?
