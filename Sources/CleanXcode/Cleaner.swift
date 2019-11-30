@@ -39,24 +39,18 @@ struct Cleaner {
         }
     }
     
+    func clean(at path: SubPath) throws {
+        guard let cleanableFolder = try? Folder(path: Path(path).value) else {
+            print("Could not locate \(path.rawValue)")
+            throw LocationError(path: path.rawValue, reason: .missing)
+        }
+        print("Cleaning out \(path.rawValue)...")
+        try cleanableFolder.empty(includingHidden: true)
+    }
+    
     func startCleaning() throws {
-        guard let derivedData = try? Folder(path: "~/Library/Developer/Xcode/DerivedData") else {
-            print("Could not locate Derived Data")
-            throw LocationError(path: "~/Library/Developer/Xcode/DerivedData", reason: .missing)
-        }
-        
-        guard let deviceSupport = try? Folder(path: "~/Library/Developer/Xcode/iOS DeviceSupport") else {
-            print("Could not locate Device Support")
-            throw LocationError(path: "~/Library/Developer/Xcode/iOS DeviceSupport", reason: .missing)
-        }
-        
-        derivedData.files.forEach { print("cleaning: \($0.name)") }
-        derivedData.subfolders.recursive.flatMap { $0.files }.forEach { print("cleaning: \($0.name)") }
-        deviceSupport.files.forEach { print("cleaning: \($0.name)") }
-        deviceSupport.subfolders.recursive.flatMap { $0.files }.forEach { print("cleaning: \($0.name)") }
-        
-        try derivedData.empty(includingHidden: true)
-        try deviceSupport.empty(includingHidden: true)
+        try clean(at: .derivedData)
+        try clean(at: .deviceSupport)
     }
     
 }
