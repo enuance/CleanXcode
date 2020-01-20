@@ -16,52 +16,48 @@ CleanXcode specifically targets two directories:
 Once these directories are located CleanXcode recursively traverses all subfolders cleaning each out until the targeted directories have been completely emptied. As you may have noticed, this is an irreversible action and should be used with caution.
 
 ___
-### -- Installation --
+### -- Requirements --
 
-1. Clone the repo
+This package uses `swift-tools-version:5.1` as a minimum requirement to build and install.
 
+Check to see that you have Swift 5.1 or greater to meet the requirements
 ```zsh
-% git clone https://github.com/enuance/CleanXcode
+% swift --version
 ```
 
-2. Open the Package
-
-```zsh
-% cd CleanXcode
-% open Package.swift
-```
-
-3. Build the executable by pressing **⌘B** or select it from the menu **Product -> Build**
-
-4. Locate the executable by running this in the terminal
-
-```zsh
-% find ~/Library/Developer/Xcode/DerivedData -name "CleanXcode"
-```
-
-This command will display all locations where files have the name “CleanXcode”
-It should be the one contained in `/Users/<UserName>/Library/Developer/Xcode/DerivedData/cleanxcode-<GeneratedString>/Build/Products/Debug/`
-
-5. You can move your executable to a directory of your choosing and run it by entering it's location in the command line
-
-```zsh
-% <DirectoryOfYourChoosing>/CleanXcode
-```
+Supported OS:
+- macOS Catalina v10.15.1 or greater
 
 ___
-### -- Optional --
+### -- Installation --
 
-You can then make an alias (allows you to enter a single command to run CleanXcode) by entering this in your: 
-
-* .bash_profile (if you’re using bash as your default shell) 
-* .zprofile (if you’re using zsh as your default shell)
+1. Clone the repo and move to the root of the directory
 
 ```zsh
-#My Command for running CleanXcode, which cleans out device support and derived files.
-alias cleanXcode='<DirectoryOfYourChoosing>/CleanXcode'
+% git clone https://github.com/enuance/cleanXcode && cd cleanXcode
 ```
 
-Once this is done, you'll be able to run CleanXcode by entering:
+2. *Optional* Run the installer and you're good to go.
+
+```zsh
+% ./Installer
+```
+
+As a good practice, please make sure to read the source code of the installer script before running it. If you do not feel comfortable running the installer, you could manually build and install it instead. If you would like to do so, follow these steps:
+
+2. Build the executable
+
+```zsh
+% swift build -c release
+```
+
+3. Install it into the local bin folder
+
+```zsh
+% mv .build/release/commitPrefix /usr/local/bin 
+```
+
+On your next Terminal session you should be able to see auto-completion and use cleanXcode.
 
 ```zsh
 % cleanXcode
