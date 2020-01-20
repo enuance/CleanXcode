@@ -54,7 +54,7 @@ As a good practice, please make sure to read the source code of the installer sc
 3. Install it into the local bin folder
 
 ```zsh
-% mv .build/release/commitPrefix /usr/local/bin 
+% mv .build/release/cleanXcode /usr/local/bin 
 ```
 
 On your next Terminal session you should be able to see auto-completion and use cleanXcode.
