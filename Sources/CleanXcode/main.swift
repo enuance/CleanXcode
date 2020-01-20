@@ -1,3 +1,5 @@
+import Consler
+
 func runCleanXcode() {
     
     Logo.display()
@@ -7,7 +9,9 @@ func runCleanXcode() {
 
     if cleaner.shouldProceed() {
         
-        print("\nNow cleaning your Xcode...\n")
+        Consler.output(
+            "", "🧼🧼🧼   ", "Now cleaning your Xcode...", "   🧼🧼🧼",
+            descriptors: [.endsLine, .normal, .cyan])
 
         do {
             
@@ -15,19 +19,23 @@ func runCleanXcode() {
             
         } catch let error {
             
-            print("There was an error in cleaning your Xcode")
-            print("Error \(error)")
-            return
+            Consler.output(
+                "Error: ", "Something went wrong while cleaning your Xcode", error.localizedDescription,
+                descriptors: [.boldRed, .endsLine],
+                type: .error)
             
+            return
         }
         
-        print("\nFinished cleaning your Xcode")
-        print("Thank You\n")
+        Consler.output(
+            "", "✨✨✨   ", "Finished cleaning your Xcode", "   ✨✨✨","",
+            descriptors: [.endsLine, .normal, .boldCyan])
         
     } else {
        
-        print("\nXcode Cleaner has been cancelled")
-        print("Thank You\n")
+        Consler.output(
+            "", "🚫   ", "CleanXcode has been cancelled", "   🚫", "",
+            descriptors: [.endsLine, .normal, .boldCyan])
         
     }
 

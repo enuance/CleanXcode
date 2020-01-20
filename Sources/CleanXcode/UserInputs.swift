@@ -14,7 +14,7 @@ enum Yes: String, CaseIterable {
     static var possibleOptions: String {
         return Self.allCases
             .map { $0.rawValue }
-            .joined(separator: " or ")
+            .joined(separator: " | ")
     }
 }
 
@@ -25,7 +25,7 @@ enum No: String, CaseIterable {
     static var possibleOptions: String {
         return Self.allCases
             .map { $0.rawValue }
-            .joined(separator: " or ")
+            .joined(separator: " | ")
     }
 }
 
