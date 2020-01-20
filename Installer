@@ -54,7 +54,7 @@ struct CleanXcodeInstaller {
     private let fileManager = FileManager.default
     private let releaseBuildDirectory: URL
     private let programsDirectory: URL
-    private let cxExecutableName = "CleanXcode"
+    private let cxExecutableName = "cleanXcode"
 
     init(filePath: [String] = CommandLine.arguments) throws {
         guard let firstArg = filePath.first else { throw IOError.invalidArgument }
