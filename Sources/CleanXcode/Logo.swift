@@ -26,12 +26,14 @@ struct Logo {
         #"                                                 "#,
         #"                                                 "#
     ).describedBy(
-        .boldRedEndsLine(0, 16, 18), .boldRed(1, 3, 5, 7, 9, 11, 13),
-        .redEndsLine(2, 4, 6, 8, 10, 12, 14), .boldCyanEndsLine(17), .endsLine(15, 19, 20)
+        .redEndsLine([.bold], at: 0, 16, 18),
+        .red([.bold], at: 1, 3, 5, 7, 9, 11, 13),
+        .redEndsLine(at: 2, 4, 6, 8, 10, 12, 14),
+        .cyanEndsLine([.bold], at: 17),
+        .endsLine(at: 15, 19, 20)
     )
     
     static func display() {
         Consler.output(output)
     }
-    
 }

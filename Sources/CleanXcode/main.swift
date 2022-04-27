@@ -21,7 +21,7 @@ func runCleanXcode() {
             
             Consler.output(
                 "Error: ", "Something went wrong while cleaning your Xcode", error.localizedDescription,
-                descriptors: [.boldRed, .endsLine],
+                descriptors: [.red(.bold), .endsLine],
                 type: .error)
             
             return
@@ -29,13 +29,13 @@ func runCleanXcode() {
         
         Consler.output(
             "", "✨✨✨   ", "Finished cleaning your Xcode", "   ✨✨✨","",
-            descriptors: [.endsLine, .normal, .boldCyan])
+            descriptors: [.endsLine, .normal, .cyan(.bold)])
         
     } else {
        
         Consler.output(
             "", "🚫   ", "CleanXcode has been cancelled", "   🚫", "",
-            descriptors: [.endsLine, .normal, .boldCyan])
+            descriptors: [.endsLine, .normal, .cyan(.bold)])
         
     }
 

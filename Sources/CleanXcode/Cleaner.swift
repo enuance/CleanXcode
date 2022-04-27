@@ -16,14 +16,15 @@ struct Cleaner {
             "Running this program will make irreversible changes.", "",
             "Are you sure you want to", " delete ", "all of Xcode's Derived",
             "Data and Device Support files from this computer?", "")
-            .describedBy(.endsLine(0, 1, 4, 5, 6), .normal(2), .boldRed(3))
+            .describedBy(.endsLine(at: 0, 1, 4, 5, 6), .normal(at: 2), .red([.bold], at: 3)
+            )
         Consler.output(warningOutput)
     }
     
     func shouldProceed() -> Bool {
         Consler.output(
             "Continue? ","[", "Yes", "/", "No","]","",
-            descriptors: [.normal, .yellow, .boldRed, .yellow, .normal, .yellow])
+            descriptors: [.normal, .yellow, .red(.bold), .yellow, .normal, .yellow])
         
         guard let response = readLine() else {
             fatalError("Unable to get retrieve your response!")
@@ -39,7 +40,7 @@ struct Cleaner {
                 ["Error: ", "Your entry was unrecognized",
                  "For Yes, you can enter: ", "[\(Yes.possibleOptions)]",
                  "For No, you can enter: ", "[\(No.possibleOptions)]"],
-                descriptors: [.boldRed, .redEndsLine, .normal, .endsLine],
+                descriptors: [.red(.bold), .redEndsLine, .normal, .endsLine],
                 type: .error)
             
             return shouldProceed()
@@ -50,7 +51,7 @@ struct Cleaner {
         guard let cleanableFolder = try? Folder(path: Path(path).value) else {
             Consler.output(
                 "Error: ", "🤷‍♂️   Could not locate \(path.rawValue)   🤷‍♂️", "",
-                descriptors: [.boldRed, .endsLine],
+                descriptors: [.red(.bold), .endsLine],
                 type: .error)
             
             throw LocationError(path: path.rawValue, reason: .missing)
